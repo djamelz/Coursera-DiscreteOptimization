@@ -11,3 +11,5 @@ Thumbs.db
 .metadata
 .settings
 .worksheet
+bin
+target

@@ -74,6 +74,23 @@ def solveIt(inputData):
 
     return outputData
 
+def solveIt2(inputData):
+    print "solveIt2"
+    t0 = time.time()
+    # Modify this code to run your optimization algorithm
+
+    #value, taken = withDynamicProgramming(inputData)
+    value, taken = withBranchAndBound(inputData)
+    # value, taken = withIterativeBranchAndBound(inputData)
+
+    # prepare the solution in the specified output format
+    outputData = str(value) + ' ' + str(0) + '\n'
+    outputData += ' '.join(map(str, taken))
+
+    print time.time() - t0, "seconds process time"
+
+    return outputData
+
 def withDynamicProgramming(inputData):
     heap, capacity = create_list(inputData)
     value, taken = dynamicProgramming(heap, capacity)
@@ -175,14 +192,20 @@ def IterativeBranchAndBound(items, capacity, estimate):
     stack.append((0, True, capacity, BbItem(0, estimate)))
 
     while(len(stack) > 0):
-        it, withItem, currentCapacity, currentItem  = stack.pop()
+        it, withItem, currentCapacity, currentItem = stack.pop()
 
-        if withItem and items[it].weight <= currentCapacity:
-            currentCapacity -= items[it].weight
-            currentItem.value += items[it].value
-            currentItem.addToList(items[it].position)
+        if withItem:
+            if items[it].weight <= currentCapacity:
+                currentCapacity -= items[it].weight
+                currentItem.value += items[it].value
+                currentItem.addToList(items[it].position)
+            else:
+                continue
         else:
-            currentItem.score = estimator(items, it+1, currentCapacity) + currentItem.value
+            currentItem.maxEstimate = estimator(items, it+1, currentCapacity) + currentItem.value
+
+        #if currentItem.maxEstimate < maxItem.value:
+        #    continue
 
         if currentCapacity == 0 or currentItem.maxEstimate < maxItem.value or it == endList:
             if currentItem.value > maxItem.value:
@@ -218,7 +241,10 @@ if __name__ == '__main__':
         inputDataFile = open(fileLocation, 'r')
         inputData = ''.join(inputDataFile.readlines())
         inputDataFile.close()
-        print solveIt(inputData)
+        if len(sys.argv) > 2:
+            print solveIt2(inputData)
+        else:
+            print solveIt(inputData)
     else:
         print 'This test requires an input file.  Please select one from the data directory. (i.e. python solver.py ./data/ks_4_0)'
 

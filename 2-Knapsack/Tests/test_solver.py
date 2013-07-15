@@ -31,7 +31,11 @@ class TestSolver(unittest.TestCase):
 
     def test_solveIt3(self):
         input_data = open("//projects/Coursera-DiscreteOptimization/2-Knapsack/data/ks_200_0").read(-1)
-        self.assertEqual(solver.solveIt(input_data), "100062 0\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0")
+        self.assertEqual(solver.solveIt(input_data), solver.solveIt2(input_data))
+
+    def test_solveIt4(self):
+        input_data = open("//projects/Coursera-DiscreteOptimization/2-Knapsack/data/ks_400_0").read(-1)
+        self.assertEqual(solver.solveIt(input_data), solver.solveIt2(input_data))
 
     def test_estimator(self):
         lines = [solver.Item(8, 4), solver.Item(10, 5), solver.Item(15, 8), solver.Item(4, 3)]
