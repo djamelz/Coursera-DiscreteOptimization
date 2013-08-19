@@ -1,7 +1,6 @@
 __author__ = 'Djamel'
 
 import unittest
-import heapq
 import solver
 
 
@@ -20,6 +19,10 @@ class TestSolver(unittest.TestCase):
     def test_create_list(self):
         input_data = open("//projects/Coursera-DiscreteOptimization/2-Knapsack/data/ks_4_0").read(-1)
         self.assertEqual(solver.create_list(input_data), ([solver.Item(8, 4), solver.Item(10, 5), solver.Item(15, 8), solver.Item(4, 3)], 11))
+
+    def test_create_sorted_list(self):
+        input_data = open("//projects/Coursera-DiscreteOptimization/2-Knapsack/data/ks_4_0").read(-1)
+        self.assertEqual(solver.create_sorted_list(input_data), ([solver.Item(8, 4), solver.Item(10, 5), solver.Item(15, 8), solver.Item(4, 3)], 11))
 
     def test_solveIt(self):
         input_data = open("//projects/Coursera-DiscreteOptimization/2-Knapsack/data/ks_4_0").read(-1)
