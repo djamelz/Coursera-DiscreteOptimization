@@ -25,12 +25,19 @@ class TravelingGreedySuite extends FunSuite {
     println(TravelingGreedy.getTotalDistance(actual))
   }
   
+  test("getTotalDistance"){
+    val cities = List(City(0, 0, 0), City(4, 1, 0), City(1, 0, 0.5), City(3, 1, 1), City(2, 0, 1))
+    val actual = TravelingGreedy.getTotalDistance(cities)  
+    assert(actual == 5.2)
+    
+  }
+  
   test("solve"){
     for (file <- Directory("//projects/Coursera-DiscreteOptimization/4-tsp/data/").list if(file.toString.contains("tsp_")) )
     {
       println
       println(file)
-      TravelingGreedy.solve(file.toString)
+      //TravelingGreedy.solve(file.toString)
     }
   }
 }

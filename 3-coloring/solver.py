@@ -4,8 +4,32 @@
 from collections import deque
 import copy
 from itertools import groupby
+import os
+from subprocess import Popen, PIPE
 
 def solveIt(inputData):
+
+    # Writes the inputData to a temporay file
+
+    tmpFileName = 'tmp.data'
+    tmpFile = open(tmpFileName, 'w')
+    tmpFile.write(inputData)
+    tmpFile.close()
+
+    #scala /projects/Coursera-DiscreteOptimization/DiscreteOptimization/target/scala-2.10/coursera-discreteoptimization_2.10-1.0.jar coloring data/gc_50_1
+
+    process = Popen(['scala', '/projects/Coursera-DiscreteOptimization/DiscreteOptimization/target/scala-2.10/coursera-discreteoptimization_2.10-1.0.jar', 'coloring', tmpFileName],
+                    stdout=PIPE)
+    (stdout, stderr) = process.communicate()
+
+    # removes the temporay file
+
+    os.remove(tmpFileName)
+
+    return stdout.strip()
+
+
+def solveItPython(inputData):
     # Modify this code to run your optimization algorithm
 
     #graph = createGraph(inputData)

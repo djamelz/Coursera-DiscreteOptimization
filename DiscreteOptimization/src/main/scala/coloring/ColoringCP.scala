@@ -13,7 +13,7 @@ object ColoringCP extends Coloring {
 
     while (true) {
       val color = best.max
-      println("best : " + (color + 1) + ", try : " + color)
+      //println("best : " + (color + 1) + ", try : " + color)
 
       if (color > 0) {
         tryBetterSolution(color, graph) match {

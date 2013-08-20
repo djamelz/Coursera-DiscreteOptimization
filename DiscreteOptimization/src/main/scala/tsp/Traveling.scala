@@ -5,11 +5,11 @@ import scala.io.Source
 trait Traveling {
   
   def getTotalDistance(cities : List[City]) : Double  = {
-    def getTotalDistanceIt(city : City, cities : List[City] ,distance : Double) : Double = cities match{
-      case head :: Nil => distance + city.to(head)
-      case head :: tail => getTotalDistanceIt(head, tail, distance + city.to(head))
+    def getTotalDistanceIt(source : City, city : City, cities : List[City] ,distance : Double) : Double = cities match{
+      case head :: Nil => distance + city.to(head) + head.to(source)
+      case head :: tail => getTotalDistanceIt(source, head, tail, distance + city.to(head))
     }
-    getTotalDistanceIt(cities.head, cities.tail, 0)
+    getTotalDistanceIt(cities.head, cities.head, cities.tail, 0)
   }
   
   def read(path : String) = Source.fromFile(path).getLines.toList

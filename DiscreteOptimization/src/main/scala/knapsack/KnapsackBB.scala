@@ -2,7 +2,7 @@ package knapsack
 
 import scala.io.Source
 
-object knapsack {
+object KnapsackBB {
 
   case class Artefact(value: Int, weight: Int, position: Int =0)
   {
@@ -11,7 +11,7 @@ object knapsack {
   case class BBItem(value: Int, estimate: Float, list: List[Int] = List())
   
   
-  def Solve(path : String) {
+  def solve(path : String) {
     val lines = Source.fromFile(path).getLines.toList
   
     

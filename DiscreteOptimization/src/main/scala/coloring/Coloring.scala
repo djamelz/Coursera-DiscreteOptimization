@@ -41,8 +41,3 @@ trait Coloring {
   
   
 }
-object Main {
-  def main(args: Array[String]) {
-    ColoringCP.solve("//projects/Coursera-DiscreteOptimization/3-coloring/data/gc_20_1")
-  }
-}

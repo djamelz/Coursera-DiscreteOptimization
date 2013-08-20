@@ -1,4 +1,4 @@
-name :="knapsack"
+name :="Coursera-DiscreteOptimization"
 
 scalaVersion := "2.10.2"
 
