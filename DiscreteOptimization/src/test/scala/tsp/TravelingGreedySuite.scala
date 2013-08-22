@@ -37,7 +37,7 @@ class TravelingGreedySuite extends FunSuite {
     {
       println
       println(file)
-      //TravelingGreedy.solve(file.toString)
+      TravelingGreedy.solve(file.toString)
     }
   }
 }
